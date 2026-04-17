@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HelmetWatch Command Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">City Safety Intelligence</p>
+          <h1>HelmetWatch Command Dashboard</h1>
+          <p class="lede">
+            Track probable helmet violations by area, review recent evidence, and
+            prioritize enforcement in high-risk corridors.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <p>Recommended field sources</p>
+          <ul>
+            <li>Traffic cameras</li>
+            <li>Drone patrol feeds</li>
+            <li>Roadside CCTV</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="stats-grid" id="stats-grid"></section>
+
+      <section class="layout layout-wide">
+        <div class="panel panel-map">
+          <div class="panel-header">
+            <h2>Hotspot Map</h2>
+            <span>Area-level violation intensity</span>
+          </div>
+          <div id="hotspot-map" class="map-frame"></div>
+        </div>
+
+        <div class="panel panel-form">
+          <div class="panel-header">
+            <h2>Upload Field Video</h2>
+            <span>Sample and analyze frames</span>
+          </div>
+          <form id="upload-form" class="upload-form">
+            <label>
+              Source name
+              <input name="source_name" type="text" value="Ward 12 Drone Patrol" required />
+            </label>
+            <label>
+              Area name
+              <input name="area_name" type="text" value="Ward 12" required />
+            </label>
+            <div class="form-grid">
+              <label>
+                Latitude
+                <input name="latitude" type="number" step="0.000001" value="25.5941" required />
+              </label>
+              <label>
+                Longitude
+                <input name="longitude" type="number" step="0.000001" value="85.1376" required />
+              </label>
+            </div>
+            <div class="form-grid">
+              <label>
+                Captured at
+                <input name="captured_at" type="datetime-local" required />
+              </label>
+              <label>
+                Source type
+                <select name="source_type">
+                  <option value="traffic_camera">Traffic camera</option>
+                  <option value="drone">Drone</option>
+                  <option value="aerial">Aerial</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Sample every Nth frame
+              <input name="sample_every" type="number" min="1" value="30" required />
+            </label>
+            <label>
+              Video file
+              <input name="media" type="file" accept="video/*" required />
+            </label>
+            <button type="submit">Analyze Upload</button>
+            <div id="upload-status" class="status-box">Waiting for upload.</div>
+          </form>
+        </div>
+      </section>
+
+      <section class="layout">
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Violation Hotspots</h2>
+            <span>Top 5 areas</span>
+          </div>
+          <div id="hotspot-list" class="table-block"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Source Coverage</h2>
+            <span>Ingestion mix</span>
+          </div>
+          <div id="source-mix" class="table-block"></div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <div class="panel panel-full">
+          <div class="panel-header">
+            <h2>Recent Incidents</h2>
+            <span>Latest captures</span>
+          </div>
+          <div id="incident-list" class="table-block"></div>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

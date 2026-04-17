@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+helmetwatch.db
+media/uploads/
+media/samples/
+.DS_Store
