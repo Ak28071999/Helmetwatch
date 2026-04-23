@@ -56,6 +56,18 @@ uvicorn backend.app.main:app --reload
 http://127.0.0.1:8000/
 ```
 
+## Screenshots
+
+Add your screenshots to the `images/` folder and GitHub will render them here.
+
+### Dashboard
+
+![HelmetWatch Dashboard](images/dashboard.png)
+
+### Upload Workflow
+
+![HelmetWatch Upload Flow](images/upload.png)
+
 ## Example ingestion
 
 ```bash
@@ -97,14 +109,14 @@ curl -X POST http://127.0.0.1:8000/api/v1/analyze/video \
 
 ## Detector upgrade path
 
-The active detector lives in [backend/app/services/detection.py](/Users/ashishkumarpandey/Documents/New%20project/backend/app/services/detection.py). Replace the `HeuristicHelmetDetector` with a trained pipeline such as:
+The active detector lives in `backend/app/services/detection.py`. Replace the `HeuristicHelmetDetector` with a trained pipeline such as:
 
 - vehicle detector to isolate bikes and scooters
 - rider or person detector
 - helmet classifier on rider head crops
 - confidence thresholding and evidence frame export
 
-The video ingestion flow lives in [backend/app/services/video.py](/Users/ashishkumarpandey/Documents/New%20project/backend/app/services/video.py), so you can later add:
+The video ingestion flow lives in `backend/app/services/video.py`, so you can later add:
 
 - RTSP ingestion
 - scheduled stream polling
