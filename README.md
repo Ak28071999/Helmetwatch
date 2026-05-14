@@ -56,17 +56,6 @@ uvicorn backend.app.main:app --reload
 http://127.0.0.1:8000/
 ```
 
-## Screenshots
-
-Add your screenshots to the `images/` folder and GitHub will render them here.
-
-### Dashboard
-
-![HelmetWatch Dashboard](images/dashboard.png)
-
-### Upload Workflow
-
-![HelmetWatch Upload Flow](images/upload.png)
 
 ## Example ingestion
 
